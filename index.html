@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研究方法複習測驗</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>研究方法複習測驗</h1>
+    </header>
+    <main>
+        <!-- 難度選擇介面 -->
+        <section id="difficulty-section" class="section">
+            <h2>請選擇難度</h2>
+            <div id="difficulty-buttons" class="button-group">
+                <button onclick="startQuiz('easy')">簡單</button>
+                <button onclick="startQuiz('medium')">中等</button>
+                <button onclick="startQuiz('hard')">困難</button>
+                <button onclick="startQuiz('scenario')">情境</button>
+            </div>
+        </section>
+        <!-- 題目顯示介面 -->
+        <section id="quiz-section" class="section" style="display:none;">
+            <div id="question-counter" class="counter"></div>
+            <div id="question-text" class="question"></div>
+            <ul id="options-list" class="options"></ul>
+            <div id="feedback" class="feedback"></div>
+            <button id="next-btn" style="display:none;" onclick="nextQuestion()">下一題</button>
+        </section>
+        <!-- 結果顯示介面 -->
+        <section id="result-section" class="section" style="display:none;">
+            <h2>測驗結果</h2>
+            <p id="score-text"></p>
+            <p id="message-text"></p>
+            <button onclick="restartQuiz()">重新開始</button>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 研究方法複習測驗</p>
+    </footer>
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
