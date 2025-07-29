@@ -3,11 +3,14 @@ body {
     font-family: "Arial", sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f7fa;
+    /* 使用漸層背景讓畫面更活潑 */
+    background: linear-gradient(135deg, #f0f4ff 0%, #e9f7ff 100%);
     color: #333;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    /* 調整整體字體大小以利閱讀，加大些但不影響排版 */
+    font-size: 22px;
 }
 
 header {
@@ -23,6 +26,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* 增加稍微透明的效果與背景陰影 */
 }
 
 footer {
@@ -40,6 +44,17 @@ footer {
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    /* 過渡效果：控制區塊淡入淡出與位移 */
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* 顯示時加入 visible class，以觸發動畫 */
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 h2 {
@@ -56,24 +71,25 @@ h2 {
 .button-group button,
 #next-btn,
 #result-section button {
-    padding: 0.6rem 1.2rem;
-    font-size: 1rem;
+    padding: 0.7rem 1.4rem;
+    font-size: 1.1rem;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    background-color: #3f51b5;
-    color: white;
-    transition: background-color 0.2s;
+    background: linear-gradient(135deg, #6573c3, #3f51b5);
+    color: #fff;
+    transition: background 0.3s, transform 0.2s;
 }
 
 .button-group button:hover,
 #next-btn:hover,
 #result-section button:hover {
-    background-color: #303f9f;
+    background: linear-gradient(135deg, #3f51b5, #6573c3);
+    transform: translateY(-2px);
 }
 
 .question {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin-bottom: 1rem;
 }
 
@@ -112,4 +128,30 @@ h2 {
 
 .feedback.incorrect {
     color: #c62828; /* 紅色 */
+}
+
+/* 高亮分數用於結果頁 */
+.highlight-score {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #d32f2f;
+}
+
+/* confetti 效果樣式 */
+.confetti-piece {
+    position: fixed;
+    top: -10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    opacity: 0.9;
+    z-index: 9999;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
 }
