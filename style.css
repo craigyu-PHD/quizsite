@@ -41,7 +41,8 @@ footer {
     width: 100%;
     margin-top: 2rem;
     padding: 1rem;
-    background-color: white;
+    /* 使用稍微透明的白色卡片以提升質感 */
+    background-color: rgba(255, 255, 255, 0.95);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
@@ -88,8 +89,10 @@ h2 {
     transform: translateY(-2px);
 }
 
+/* 統一題目、選項及解析字體大小，並再放大些以方便閱讀 */
+/* 調整題目字體大小，與選項與解析統一且更大，以方便閱讀 */
 .question {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
 }
 
@@ -103,6 +106,8 @@ h2 {
     margin: 0.5rem 0;
 }
 
+/* 選項按鈕統一字體大小並放大 */
+/* 選項按鈕統一字體大小，並再放大些 */
 .options button {
     width: 100%;
     text-align: left;
@@ -111,15 +116,19 @@ h2 {
     border-radius: 4px;
     background-color: #fafafa;
     transition: background-color 0.2s;
+    font-size: 1.5rem;
 }
 
 .options button:hover {
     background-color: #e0e0e0;
 }
 
+/* 答案解析字體再放大，維持統一 */
+/* 答案解析字體放大至與題目和選項一致，並加粗 */
 .feedback {
     margin-top: 1rem;
     font-weight: bold;
+    font-size: 1.5rem;
 }
 
 .feedback.correct {
@@ -128,6 +137,15 @@ h2 {
 
 .feedback.incorrect {
     color: #c62828; /* 紅色 */
+}
+
+/* 首頁說明文字樣式 */
+.description {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    text-align: center;
 }
 
 /* 高亮分數用於結果頁 */
@@ -147,6 +165,13 @@ h2 {
     opacity: 0.9;
     z-index: 9999;
     animation: fall linear forwards;
+}
+
+/* 調整字體大小 - 追加規則以覆蓋既有設定，讓題目、選項及解析字體統一且更大 */
+.question,
+.options button,
+.feedback {
+    font-size: 1.5rem;
 }
 
 @keyframes fall {

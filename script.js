@@ -41,13 +41,32 @@ const consolations = [
 
 // 用於增加解說的生活化例子
 const examples = [
-    '例如，在設計實驗時，就像烹飪時要控制食材比例以確保味道一致。',
-    '比如開車時遵守交通規則，就如同研究時遵循正確的步驟。',
-    '就像學習樂器需要反覆練習，研究方法也需要多次嘗試與修正。',
-    '好比在烤蛋糕時要精準掌握溫度，研究也需要控制條件。',
-    '就像在旅途中使用地圖導航，研究方法能指引你找到正確方向。',
-    '就像運動員透過練習掌握技巧，研究者也需要反覆驗證假設。',
-    '例如整理家務時，你會按照順序完成，研究設計也需要有條理的步驟。'
+    '例如，在設計實驗時，就像烹飪時要控制食材比例以確保味道一致。要先明確定義每個食材（變項），並保持條件一致才能比較結果。',
+    '比如開車時遵守交通規則，就如同研究時遵循正確的步驟：依序規劃、收集資料、分析與解釋，才能安全到達目的地。',
+    '就像學習樂器需要反覆練習，研究方法也需要多次嘗試與修正，才能找到最佳的演奏方式或研究設計。',
+    '好比在烤蛋糕時要精準掌握溫度，研究也需要控制條件，這樣才能確保結果的可靠性與一致性。',
+    '就像在旅途中使用地圖導航，研究方法能指引你找到正確方向，避免在浩大的資訊中迷失。',
+    '運動員透過訓練掌握技巧，研究者也需要反覆驗證假設；每次嘗試都能讓你更接近真相。',
+    '整理家務時，你會按照順序清理，以免重複；研究設計也需要有條理的步驟，才能有效回答問題。',
+    '譬如栽種植物需要適合的土壤與灌溉，同樣地，研究需要適當的樣本與方法，才能讓結果茁壯且有意義。'
+];
+
+// 延伸概念說明：用於在解析後提供更完整的背景與應用
+// 我們提供更具體的研究方法相關延伸概念，幫助你從不同面向理解題目。
+const extendedConcepts = [
+    '此題涉及研究設計與操作化定義的概念。掌握好變項的定義與量測方式，能幫助你在實驗與調查中準確收集資料，避免誤差。',
+    '這個概念與抽樣方法及統計推論相關。了解隨機抽樣與抽樣誤差能讓你更好地推論母群體特性，並合理解讀研究結果。',
+    '題目中隱含對信度與效度的考量。熟悉這些指標有助於評估問卷或量表的品質，確保測量的結果既一致又符合研究目的。',
+    '此類問題探討資料收集與分析技巧。透過比較不同量表與測量方式，你可以適切選擇定性或定量方法來解答研究問題。',
+    '這個題目延伸至研究倫理與資料保護的重要性。遵循研究倫理原則與尊重受試者權益，是進行任何研究的基礎。',
+    // 新增的延伸概念：偏差與中立性
+    '本題也關涉到資料偏差與研究中立性的議題。了解如何識別並控制系統性誤差與隨機誤差，能提高研究結果的可信度。',
+    // 新增：內在與外在效度
+    '這個概念與因果關係及內在效度與外在效度之間的平衡有關。設計研究時需控制干擾變項，同時考慮結果能否推廣至更廣泛的群體。',
+    // 新增：假設檢定流程
+    '題目亦涉及假設檢定的流程，包括設定零假設與對立假設、選擇適當的檢定方法、計算統計量並解釋 p 值。熟悉這些步驟能幫助你正確解讀研究發現。',
+    // 新增：效度類型
+    '此外，此題也提醒我們思考測驗效度的多種類型，例如內容效度、建構效度與判準效度，這些概念有助於判斷測量工具是否符合研究目的。'
 ];
 
 // 隨機排序陣列
@@ -130,29 +149,34 @@ function selectOption(selectedIndex) {
         btn.disabled = true;
     });
 
+    // 判斷是否答對，不使用鼓勵或安慰語
     if (selectedIndex === questionData.answer) {
         score += 10;
-        const encouragement = encouragements[Math.floor(Math.random() * encouragements.length)];
-        feedbackEl.textContent = encouragement;
+        feedbackEl.textContent = '答對了。';
         feedbackEl.classList.add('correct');
     } else {
         const correctText = questionData.options[questionData.answer];
-        const consolation = consolations[Math.floor(Math.random() * consolations.length)];
-        feedbackEl.textContent = `答錯了。正確答案是：${correctText}。${consolation}`;
+        feedbackEl.textContent = `答錯了。正確答案是：${correctText}。`;
         feedbackEl.classList.add('incorrect');
     }
 
-    // 如果有解釋，加入生活化例子
+    // 如果有解釋，加入詳細解析
     if (questionData.explanation) {
         const expPara = document.createElement('p');
         expPara.textContent = `解析：${questionData.explanation}`;
         expPara.style.marginTop = '0.5rem';
         feedbackEl.appendChild(expPara);
     }
-    // 加入生活例子
+    // 加入延伸概念說明
+    const extPara = document.createElement('p');
+    const extText = extendedConcepts[Math.floor(Math.random() * extendedConcepts.length)];
+    extPara.textContent = `延伸：${extText}`;
+    extPara.style.marginTop = '0.5rem';
+    feedbackEl.appendChild(extPara);
+    // 加入生活例子說明
     const example = examples[Math.floor(Math.random() * examples.length)];
     const exPara = document.createElement('p');
-    exPara.textContent = example;
+    exPara.textContent = `例子：${example}`;
     exPara.style.marginTop = '0.5rem';
     feedbackEl.appendChild(exPara);
 
@@ -250,6 +274,6 @@ function removeConfetti() {
 // 在頁面載入完成後，讓難度區塊淡入
 document.addEventListener('DOMContentLoaded', () => {
     const difficultySec = document.getElementById('difficulty-section');
-    // 確保頁面載入時淡入第一個區塊
+    // 首頁內容由 index.html 定義，僅需要在載入時觸發淡入動畫
     requestAnimationFrame(() => difficultySec.classList.add('visible'));
 });
