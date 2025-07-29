@@ -10,14 +10,16 @@ body {
     flex-direction: column;
     min-height: 100vh;
     /* 調整整體字體大小以利閱讀，加大些但不影響排版 */
-    font-size: 22px;
+    font-size: 23px; /* 再略微調整整體字體大小，提升易讀性 */
 }
 
 header {
-    background-color: #3f51b5;
+    /* 使用漸層讓頁首更加活潑 */
+    background: linear-gradient(135deg, #5b4baf, #8d68c7);
     color: white;
-    padding: 1rem;
+    padding: 1.2rem 1rem;
     text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 main {
@@ -42,7 +44,7 @@ footer {
     margin-top: 2rem;
     padding: 1rem;
     /* 使用稍微透明的白色卡片以提升質感 */
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(255, 255, 255, 0.98);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
@@ -62,6 +64,12 @@ h2 {
     margin-top: 0;
 }
 
+/* 首頁標題字體調整，使其更醒目 */
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.2rem;
+}
+
 .button-group {
     display: flex;
     flex-wrap: wrap;
@@ -72,8 +80,8 @@ h2 {
 .button-group button,
 #next-btn,
 #result-section button {
-    padding: 0.7rem 1.4rem;
-    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.2rem;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -92,7 +100,7 @@ h2 {
 /* 統一題目、選項及解析字體大小，並再放大些以方便閱讀 */
 /* 調整題目字體大小，與選項與解析統一且更大，以方便閱讀 */
 .question {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-bottom: 1rem;
 }
 
@@ -116,7 +124,7 @@ h2 {
     border-radius: 4px;
     background-color: #fafafa;
     transition: background-color 0.2s;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
 .options button:hover {
@@ -128,7 +136,7 @@ h2 {
 .feedback {
     margin-top: 1rem;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
 .feedback.correct {
@@ -142,7 +150,7 @@ h2 {
 /* 首頁說明文字樣式 */
 .description {
     margin: 1rem 0;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     line-height: 1.6;
     color: #555;
     text-align: center;
@@ -153,6 +161,14 @@ h2 {
     font-size: 2rem;
     font-weight: bold;
     color: #d32f2f;
+}
+
+/* 標語字體大小與風格 */
+.tagline {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-top: 0.3rem;
+    color: #e0e0ff;
 }
 
 /* confetti 效果樣式 */
@@ -171,7 +187,7 @@ h2 {
 .question,
 .options button,
 .feedback {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
 @keyframes fall {
